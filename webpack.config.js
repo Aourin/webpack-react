@@ -1,18 +1,20 @@
 require('babel/register');
 
+//Base Paths
 const APP_PATH    = './app',
       BUILD_PATH  = './dist';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //Resolves app path
-function resolve(file) {
-  return [APP_PATH, file].join('/');
+function resolve(path) {
+  return [APP_PATH, path].join('/');
 };
 
 //Exports
 module.exports = {
-  entry: [APP_PATH,'index.js'].join('/'),
+  entry: resolve('index.js'),
+  //Where Bundles output 
   output: {
     path: BUILD_PATH,
     filename: 'bundle.js'
@@ -24,13 +26,15 @@ module.exports = {
       hash: true
     })
   ],
+  //Resolves paths
   resolve: {
     extensions : ['', '.js', '.jsx'],
     alias: {
       app: APP_PATH,
-      lib: [APP_PATH, 'lib'].join('/')
+      lib: resolve('lib')
     }
   },
+  //Loaders and Stuffs
   module: {
     loaders: [
       { 
