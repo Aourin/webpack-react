@@ -1,8 +1,8 @@
 require('babel/register');
 
 //Base Paths
-const APP_PATH    = './app',
-      BUILD_PATH  = './dist';
+const APP_PATH    = __dirname + '/app',
+      BUILD_PATH  = __dirname + '/dist';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,12 +17,14 @@ module.exports = {
   //Where Bundles output 
   output: {
     path: BUILD_PATH,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    sourceMapFilename: 'bundle.map.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: resolve('index.html'),
       filename: 'index.html',
+      inject: true,
       hash: true
     })
   ],
@@ -31,7 +33,8 @@ module.exports = {
     extensions : ['', '.js', '.jsx'],
     alias: {
       app: APP_PATH,
-      lib: resolve('lib')
+      lib: resolve('lib'),
+      styles: resolve('styles')
     }
   },
   //Loaders and Stuffs
@@ -41,9 +44,13 @@ module.exports = {
         test: /\.css$/, 
         loader: 'style!css'
       },
+      {
+        test: /\.scss$/,
+        loader: "style!css!sass"
+      },
       { 
         test: /\.js$/,  
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         loaders: ['jsx-loader','babel']
       }
     ]

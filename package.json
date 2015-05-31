@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors"
+    "dev": "webpack-dev-server --devtool eval --hot --progress --colors"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +16,9 @@
     "html-webpack-plugin": "^1.4.0",
     "jsx-loader": "^0.13.2",
     "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.1.2",
     "react-loader": "^1.2.0",
+    "sass-loader": "^1.0.2",
     "webpack": "^1.9.10"
   },
   "dependencies": {
