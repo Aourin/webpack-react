@@ -1,13 +1,13 @@
 {
-  "name": "portfolio",
+  "name": "webpack-react-boilerplate",
   "version": "0.1.0",
-  "description": "Harry Ho portfolio website",
+  "description": "Webpack React Boilerplate",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --hot --progress --colors"
   },
-  "author": "",
+  "author": "Harry Ho",
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.4.7",
